@@ -27,13 +27,13 @@ def writable_dir(preferred):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--horizon", type=int, default=7, help="days to hold out and forecast")
+    p.add_argument("--horizon", type=int, default=14, help="days to hold out and forecast")
     p.add_argument("--alpha", type=float, default=1.0, help="Ridge regularisation strength")
     p.add_argument("--out", default=os.environ.get("OUTPUT_DIR", "outputs"), help="where to write results")
     args = p.parse_args()
 
     print(f"[1/4] Loading data ...", flush=True)
-    df = load()
+    df = load("/home/renku/work/energy-input-data/consumption.csv")
     print(f"      {len(df)} days, {df.date.min().date()} to {df.date.max().date()}", flush=True)
     time.sleep(2) 
 
